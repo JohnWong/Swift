@@ -66,7 +66,7 @@ println(afterTimeStamp - beforeTimeStamp)
 */
 
 let beforeTimeStamp:NSTimeInterval = NSDate().timeIntervalSince1970
-let n = 100000
+let n = 1000000
 var array:[Int] = [Int](count: n, repeatedValue: 0)
 for i in 0..<n{
     array[i] = random()
@@ -76,4 +76,7 @@ println(afterTimeStamp - beforeTimeStamp)
 sort(&array)
 let  endTimeStamp:NSTimeInterval = NSDate().timeIntervalSince1970
 println(endTimeStamp - afterTimeStamp)
-// 1000,000     7.41477
+// Array assign and sort in Swift
+// 100,000      0.27816 0.44849
+// 1000,000     2.68700 4.85194
+// 1,000,000    27.56229 53.96336

@@ -65,6 +65,7 @@ int main(int argc, const char * argv[]) {
 // 10000,000        0.38629
 */
 
+/*
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSTimeInterval beforeTimeStamp = [[NSDate date]timeIntervalSince1970];
@@ -81,3 +82,28 @@ int main(int argc, const char * argv[]) {
 //   100,000        0.00533
 //  1000,000        0.06501
 // 10000,000        0.53922
+*/
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSTimeInterval beforeTimeStamp = [[NSDate date]timeIntervalSince1970];
+        int n = 10000000;
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i=0; i<n; i++){
+            array[i] = @(rand());
+        }
+        NSTimeInterval afterTimeStamp = [[NSDate date]timeIntervalSince1970];
+        printf("%f\n", afterTimeStamp - beforeTimeStamp);
+        [array sortedArrayUsingComparator:^NSComparisonResult(NSNumber *obj1, NSNumber *obj2) {
+            return [obj1 compare:obj2];
+        }];
+        
+        NSTimeInterval endTimeStamp = [[NSDate date]timeIntervalSince1970];
+        printf("%f\n", endTimeStamp - afterTimeStamp);
+    }
+    return 0;
+}
+// Array assign and sort in Objective-C
+// 100,000      0.005196 0.132586
+// 1,000,000    0.058187 1.667135
+// 10,000,000   0.474943 21.694848
